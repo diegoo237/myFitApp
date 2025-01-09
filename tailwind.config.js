@@ -11,6 +11,7 @@ export default {
       },
       colors: {
         "graphite-black": "#1C1C1E",
+        "violet-6": "#7950F2",
       },
     },
   },
