@@ -38,6 +38,14 @@ app.post("/register", async (req, res) => {
   }
 });
 
+app.get("/login", async (req, res) => {
+  try {
+    console.log(req);
+  } catch (err) {
+    res.status(400).send("Erro ao registrar o usuário", err);
+  }
+});
+
 app.listen(5000, () => {
   console.log("Servidor rodando na porta 5000");
 });

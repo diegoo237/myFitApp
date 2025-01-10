@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         anek: ["Anek Kannada", "sans-serif"],
+        livvic: ['"Livvic"', "sans-serif"],
+        mplus: ['"M PLUS 2"', "sans-serif"],
       },
       fontSize: {
         base: ["17px", "22px"],
@@ -12,6 +14,8 @@ export default {
       colors: {
         "graphite-black": "#1C1C1E",
         "violet-6": "#7950F2",
+        "neutral-gray": "#808080",
+        "charcoal-gray": "#252525",
       },
     },
   },
