@@ -1,4 +1,4 @@
-function RegisterForm({ handleRegister }) {
+function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
   return (
     <form
       className="text-white	flex flex-col w-64 sm:w-72 md:w-80 lg:w-96 xl:w-2/6 gap-y-3"
@@ -14,6 +14,7 @@ function RegisterForm({ handleRegister }) {
           aria-label="User name"
           placeholder="zack12"
           className="h-11 bg-graphite-black px-1.5 border-neutral-gray border-2 rounded"
+          onChange={(e) => setUserName(e.target.value)}
           required
         ></input>
       </div>
@@ -25,6 +26,7 @@ function RegisterForm({ handleRegister }) {
           aria-label="Email"
           placeholder="zack@hotmail.com"
           className="h-11 bg-graphite-black px-1.5 border-2 border-neutral-gray rounded"
+          onChange={(e) => setEmail(e.target.value)}
           required
         ></input>
       </div>
@@ -35,6 +37,7 @@ function RegisterForm({ handleRegister }) {
           type="password"
           aria-label="password"
           className="h-11 bg-graphite-black px-1.5 border-2 border-neutral-gray rounded"
+          onChange={(e) => setPassword(e.target.value)}
           required
         ></input>
       </div>

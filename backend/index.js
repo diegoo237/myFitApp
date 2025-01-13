@@ -1,4 +1,6 @@
+const bcrypt = require("bcrypt");
 require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -18,31 +20,38 @@ app.use(express.json());
 app.use(cors());
 
 const UserSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  senha: { type: String, required: true },
+  password: { type: String, required: true },
 });
 const User = mongoose.model("User", UserSchema);
 
-app.get("/", (req, res) => {
-  res.send("App está funcionando!");
-});
+// Rota para criar um novo usuário
+app.post("/users", async (req, res) => {
+  const { email, username, password } = req.body;
 
-app.post("/register", async (req, res) => {
-  try {
-    const user = new User(req.body);
-    const result = await user.save();
-    res.status(201).json(result);
-  } catch (err) {
-    res.status(400).send("Erro ao registrar o usuário", err);
+  const existingUser = await User.findOne({ username });
+  if (existingUser) {
+    return res.status(400).json({ message: "Nome de Usuário ja em uso" });
   }
-});
+  const existingEmail = await User.findOne({ email });
+  if (existingEmail) {
+    return res.status(400).json({ message: "Email já em uso" });
+  }
 
-app.get("/login", async (req, res) => {
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const newUser = new User({ username, email, password: hashedPassword });
+
   try {
-    console.log(req);
-  } catch (err) {
-    res.status(400).send("Erro ao registrar o usuário", err);
+    const savedUser = await newUser.save();
+    res
+      .status(201)
+      .json({ message: "Usuário criado com sucesso", user: savedUser });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Erro ao criar usuário", error: error.message });
   }
 });
 
