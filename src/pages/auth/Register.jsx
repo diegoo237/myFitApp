@@ -1,8 +1,10 @@
 import { useState } from "react";
 import RegisterForm from "../../components/auth/RegisterForm";
-import { registerUser } from "../../api/userService";
+import RegisterPop from "../../components/auth/RegisterPop.jsx";
+import { registerUser } from "../../api/registerUser";
 
-function Register() {
+function Register({ setToken }) {
+  const [registered, setRegistered] = useState("");
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,19 +13,20 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await registerUser({ username, email, password });
-      console.log("Usuário registrado com sucesso:", response);
+      await registerUser({ username, email, password });
+      setRegistered(true);
     } catch (error) {
-      if (error.message.includes("Erro 404")) {
-        console.error("Rota não encontrada: ", error.message);
-      } else {
-        console.error("Erro ao realizar o registro:", error);
-      }
+      console.error("Erro na api de registro:", error);
     }
   };
 
   return (
-    <main className="h-screen bg-graphite-black flex flex-col	justify-center items-center">
+    <main className="relative h-screen bg-graphite-black flex flex-col	justify-center items-center">
+      <RegisterPop
+        username={username}
+        setToken={setToken}
+        registered={registered}
+      />
       <RegisterForm
         handleRegister={handleRegister}
         setEmail={setEmail}

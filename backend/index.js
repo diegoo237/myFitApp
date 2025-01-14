@@ -1,14 +1,17 @@
-const bcrypt = require("bcrypt");
-require("dotenv").config();
-
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const bcrypt = require("bcrypt");
 const cors = require("cors");
+
+dotenv.config();
+
+const User = require("./models/UserModel");
 
 async function connectDB() {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {});
-    console.log("Conectado ao banco de dados com sucesso!");
+    console.log(`Conectado ao banco de dados: ${mongoose.connection.name}`);
   } catch (err) {
     console.log("Erro ao conectar:", err);
   }
@@ -19,39 +22,19 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const UserSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-});
-const User = mongoose.model("User", UserSchema);
-
 // Rota para criar um novo usuário
 app.post("/users", async (req, res) => {
-  const { email, username, password } = req.body;
-
-  const existingUser = await User.findOne({ username });
-  if (existingUser) {
-    return res.status(400).json({ message: "Nome de Usuário ja em uso" });
-  }
-  const existingEmail = await User.findOne({ email });
-  if (existingEmail) {
-    return res.status(400).json({ message: "Email já em uso" });
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const newUser = new User({ username, email, password: hashedPassword });
-
   try {
+    const { email, username, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, email, password: hashedPassword });
+
     const savedUser = await newUser.save();
-    res
-      .status(201)
-      .json({ message: "Usuário criado com sucesso", user: savedUser });
+    res.status(201).json({ user: savedUser });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Erro ao criar usuário", error: error.message });
+    console.error("Erro ao criar usuário:", error.message);
+    res.status(500);
   }
 });
 
