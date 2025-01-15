@@ -1,4 +1,10 @@
-function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
+function RegisterForm({
+  disabled,
+  handleRegister,
+  setEmail,
+  setUserName,
+  setPassword,
+}) {
   return (
     <form
       className="text-white	flex flex-col w-64 sm:w-72 md:w-80 lg:w-96 xl:w-2/6 gap-y-3"
@@ -10,6 +16,7 @@ function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
       <div className="flex flex-col">
         <label className="text-gray-300 font-mplus">Username</label>
         <input
+          disabled={disabled}
           type="text"
           aria-label="User name"
           placeholder="zack12"
@@ -22,6 +29,7 @@ function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
       <div className="flex flex-col">
         <label className="text-gray-300 font-mplus">Email</label>
         <input
+          disabled={disabled}
           type="text"
           aria-label="Email"
           placeholder="zack@hotmail.com"
@@ -34,6 +42,7 @@ function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
       <div className="flex flex-col">
         <label className="text-gray-300	 font-mplus">Password</label>
         <input
+          disabled={disabled}
           type="password"
           aria-label="password"
           className="h-11 bg-graphite-black px-1.5 border-2 border-neutral-gray rounded"
@@ -42,7 +51,10 @@ function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
         ></input>
       </div>
 
-      <button className="mt-9 bg-violet-6 h-11 font-mplus font-bold text-charcoal-gray rounded">
+      <button
+        disabled={disabled}
+        className="mt-9 bg-violet-6 h-11 font-mplus font-bold text-charcoal-gray rounded"
+      >
         REGISTER
       </button>
     </form>

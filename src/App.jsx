@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import {
   Route,
@@ -30,6 +29,7 @@ function App() {
       )
     : createRoutesFromElements(
         <>
+          <Route path="*" element={<NotFoundPage />} />;
           <Route path="/" element={<Enter />} />
           <Route path="login" element={<Login setToken={setToken} />} />
           <Route path="register" element={<Register setToken={setToken} />} />

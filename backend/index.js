@@ -7,7 +7,6 @@ const cors = require("cors");
 dotenv.config();
 
 const User = require("./models/UserModel");
-
 async function connectDB() {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {});

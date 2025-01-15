@@ -2,6 +2,7 @@ import { useState } from "react";
 import RegisterForm from "../../components/auth/RegisterForm";
 import RegisterPop from "../../components/auth/RegisterPop.jsx";
 import { registerUser } from "../../api/registerUser";
+import BlurFilter from "../../components/Filters/BlurFilter.jsx";
 
 function Register({ setToken }) {
   const [registered, setRegistered] = useState("");
@@ -22,12 +23,20 @@ function Register({ setToken }) {
 
   return (
     <main className="relative h-screen bg-graphite-black flex flex-col	justify-center items-center">
-      <RegisterPop
-        username={username}
-        setToken={setToken}
-        registered={registered}
-      />
+      {registered ? (
+        <>
+          <BlurFilter />
+          <RegisterPop
+            username={username}
+            setToken={setToken}
+            registered={registered}
+          />
+        </>
+      ) : (
+        ""
+      )}
       <RegisterForm
+        disabled={registered}
         handleRegister={handleRegister}
         setEmail={setEmail}
         setUserName={setUserName}
