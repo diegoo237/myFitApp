@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Route,
   createBrowserRouter,
@@ -15,7 +15,17 @@ import Register from "./pages/auth/Register";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  const [token, setToken] = useState();
+  const storedToken = localStorage.getItem("token");
+  const [token, setToken] = useState(storedToken);
+
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  }, [token]);
+
   const routes = token
     ? createRoutesFromElements(
         <>

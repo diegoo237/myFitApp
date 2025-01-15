@@ -1,24 +1,31 @@
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-function RegisterPop({ registered, setToken, username }) {
+function RegisterPop({ registered, setToken, username, handleLogin }) {
+  const navigate = useNavigate();
+
+  const handleLoginAndNavigate = async () => {
+    await handleLogin();
+    navigate("/");
+  };
   return (
     <div
       className={
-        "absolute flex flex-col gap-3	bg-graphite-black h-48 p-3 border-2 border-slate-100"
+        "absolute flex flex-col gap-3	bg-graphite-black h-48 p-3 border-1 rounded-md border-slate-100"
       }
     >
-      <h1 className="text-white text-xl	">Registro realizado com sucesso</h1>
+      <h1 className="text-white text-2xl font-semibold">
+        Registro realizado com sucesso
+      </h1>
       <span className="flex gap-3	">
-        <Link
+        <button
           className="bg-violet-6 px-2 py-1"
-          onClick={() => setToken(true)}
-          to="/"
+          onClick={handleLoginAndNavigate}
         >
           Conectar como {username}
-        </Link>
-        <Link to="/login" className="bg-violet-6 px-2 py-1">
+        </button>
+        <button className="bg-violet-6 px-2 py-1" onClick={() => navigate("/")}>
           Conectar com outra conta
-        </Link>
+        </button>
       </span>
     </div>
   );

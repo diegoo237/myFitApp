@@ -1,4 +1,4 @@
-function AuthForm({ handleLogin }) {
+function AuthForm({ handleLogin, setUserName, setPassword }) {
   return (
     <form
       className="text-white	flex flex-col w-64 sm:w-72 md:w-80 lg:w-96 xl:w-2/6 gap-y-3"
@@ -9,13 +9,14 @@ function AuthForm({ handleLogin }) {
       </label>
 
       <div className="flex flex-col">
-        <label className="text-gray-300 font-mplus">Email</label>
+        <label className="text-gray-300 font-mplus">Username</label>
         <input
           type="text"
-          aria-label="Email"
-          placeholder="zack@hotmail.com"
+          aria-label="Username"
+          placeholder="zack"
           className="h-11 bg-graphite-black px-1.5 border-neutral-gray border-2 rounded"
           required
+          onChange={(e) => setUserName(e.target.value)}
         ></input>
       </div>
 
@@ -27,6 +28,7 @@ function AuthForm({ handleLogin }) {
           aria-label="password"
           className="h-11 bg-graphite-black px-1.5 border-neutral-gray border-2 rounded"
           required
+          onChange={(e) => setPassword(e.target.value)}
         ></input>
       </div>
 

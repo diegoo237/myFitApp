@@ -1,7 +1,8 @@
 import { useState } from "react";
 import RegisterForm from "../../components/auth/RegisterForm";
 import RegisterPop from "../../components/auth/RegisterPop.jsx";
-import { registerUser } from "../../api/registerUser";
+import { registerUser } from "../../api/auth/registerUser.js";
+import { loginUser } from "../../api/auth/loginUser";
 import BlurFilter from "../../components/Filters/BlurFilter.jsx";
 
 function Register({ setToken }) {
@@ -17,7 +18,19 @@ function Register({ setToken }) {
       await registerUser({ username, email, password });
       setRegistered(true);
     } catch (error) {
-      console.error("Erro na api de registro:", error);
+      console.error(error);
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await loginUser({ username, password });
+
+      setToken(response.token);
+
+      localStorage.setItem("token", response.token);
+    } catch (error) {
+      alert("Usuario ou senha incorretos");
     }
   };
 
@@ -27,6 +40,7 @@ function Register({ setToken }) {
         <>
           <BlurFilter />
           <RegisterPop
+            handleLogin={handleLogin}
             username={username}
             setToken={setToken}
             registered={registered}
