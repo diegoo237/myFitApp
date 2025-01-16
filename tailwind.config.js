@@ -11,6 +11,9 @@ export default {
       fontSize: {
         base: ["17px", "22px"],
       },
+      margin: {
+        1: "-0.32rem",
+      },
       colors: {
         "graphite-black": "#1C1C1E",
         "violet-6": "#7950F2",
