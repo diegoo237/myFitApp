@@ -1,9 +1,9 @@
-import bars from "../../assets/icons/bars.svg";
+import userAtributes from "../../assets/icons/userAtributes.svg";
 
 function BarsBtn() {
   return (
     <button>
-      <img className="w-7" src={bars} alt="" />
+      <img className="w-7" src={userAtributes} alt="" />
     </button>
   );
 }

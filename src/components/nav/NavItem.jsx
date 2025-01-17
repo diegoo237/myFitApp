@@ -1,39 +1,36 @@
-import { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
 
-function NavItem({ icon, path, label }) {
-  const location = useLocation();
-  const [isActive, SetIsActive] = useState(location.pathname === path);
-  const componentRef = useRef(null);
-
-  const handleClickOutside = (event) => {
-    if (componentRef.current && !componentRef.current.contains(event.target)) {
-      SetIsActive(false);
-    }
-  };
-  useEffect(() => {
-    if (isActive) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isActive]);
+function NavItem({ icon, path, label, fillIcon }) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <NavLink
-      ref={componentRef}
-      className={
-        isActive
-          ? "flex items-center gap-2 text-white font-bold bg-black p-3 rounded-xl "
-          : "text-black opacity-85 hover:opacity-100"
-      }
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       to={path}
+      className={({ isActive }) =>
+        isActive
+          ? "flex items-center gap-2 text-white-gray font-semibold bg-[#343a40] p-3 rounded-xl "
+          : "flex items-center gap-2 text-white hover:fill-black"
+      }
     >
-      <img className="w-7" src={icon} alt="" />
-      {isActive && <p className="flex items-center mb-1">{label}</p>}
+      {({ isActive }) => (
+        <>
+          {isActive ? (
+            <img className="w-7" src={fillIcon} alt={label} />
+          ) : (
+            <img
+              className="w-7"
+              src={isHovered ? fillIcon : icon}
+              alt={label}
+            />
+          )}
+          {isActive && <p className="flex items-center mb-1">{label}</p>}
+        </>
+      )}
     </NavLink>
   );
 }
+
 export default NavItem;

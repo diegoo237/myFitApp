@@ -17,7 +17,7 @@ export default {
       colors: {
         "graphite-black": "#1C1C1E",
         "violet-6": "#7950F2",
-        "neutral-gray": "#808080",
+        "white-gray": "#f1f3f5",
         "charcoal-gray": "#252525",
       },
     },
