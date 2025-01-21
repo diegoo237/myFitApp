@@ -1,10 +1,12 @@
 import userAtributes from "../../assets/icons/userAtributes.svg";
 
-function BarsBtn() {
+function BarsBtn({ SetSideBarOpen }) {
   return (
-    <button>
-      <img className="w-7" src={userAtributes} alt="" />
-    </button>
+    <>
+      <button onClick={() => SetSideBarOpen(true)}>
+        <img className="w-7" src={userAtributes} alt="" />
+      </button>
+    </>
   );
 }
 export default BarsBtn;

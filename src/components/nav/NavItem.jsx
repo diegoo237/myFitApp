@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 function NavItem({ icon, path, label, fillIcon }) {
@@ -11,23 +11,23 @@ function NavItem({ icon, path, label, fillIcon }) {
       to={path}
       className={({ isActive }) =>
         isActive
-          ? "flex items-center gap-2 text-white-gray font-semibold bg-[#343a40] p-3 rounded-xl "
-          : "flex items-center gap-2 text-white hover:fill-black"
+          ? "flex items-center  justify-center text-white-gray font-semibold bg-[#343a40] p-2 rounded-xl "
+          : "flex items-center gap-2  text-white hover:fill-black"
       }
     >
       {({ isActive }) => (
-        <>
+        <div className="flex gap-2 items-center ">
           {isActive ? (
-            <img className="w-7" src={fillIcon} alt={label} />
+            <img className="w-6 " src={fillIcon} alt={label} />
           ) : (
             <img
-              className="w-7"
+              className="w-6"
               src={isHovered ? fillIcon : icon}
               alt={label}
             />
           )}
-          {isActive && <p className="flex items-center mb-1">{label}</p>}
-        </>
+          {isActive && <p className="mb-1 ">{label}</p>}
+        </div>
       )}
     </NavLink>
   );

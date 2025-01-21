@@ -7,8 +7,9 @@ import nutrition from "../../assets/icons/nutrition.svg";
 import nutritionFill from "../../assets/icons/nutritionFill.svg";
 
 function NavBar() {
+  // bg-white rounded-xl bg-white rounded-xl px-5 gap-4 h-16
   return (
-    <div className="h-16 bg-white rounded-xl flex items-center justify-center px-5 gap-4 font-anek text-base ">
+    <div className="fixed left-1/2 transform -translate-x-1/2 bottom-3  px-3 gap-3 h-14 sm:sticky  bg-white rounded-xl flex items-center justify-center font-anek text-base">
       <NavItem
         icon={exercise}
         fillIcon={exerciseFill}

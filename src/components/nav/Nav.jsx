@@ -3,12 +3,13 @@ import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
 import BarsBtn from "./BarsBtn";
 import LogOutBtn from "./LogOutBtn";
+import SideBar from "./SideBar";
 
-const Header = ({ setToken }) => {
+const Nav = ({ setToken, SetSideBarOpen }) => {
   return (
     <>
       <nav className=" w-full flex bg-graphite-black justify-between items-center p-4">
-        <BarsBtn />
+        <BarsBtn SetSideBarOpen={SetSideBarOpen} />
         <NavBar />
         <LogOutBtn setToken={setToken} />
       </nav>
@@ -16,4 +17,4 @@ const Header = ({ setToken }) => {
     </>
   );
 };
-export default Header;
+export default Nav;

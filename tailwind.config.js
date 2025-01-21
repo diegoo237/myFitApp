@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        mmd: { max: "639px" }, // Breakpoint para telas menores que 640px
+      },
       fontFamily: {
         anek: ["Anek Kannada", "sans-serif"],
         livvic: ['"Livvic"', "sans-serif"],
