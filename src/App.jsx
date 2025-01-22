@@ -12,7 +12,9 @@ import Enter from "./pages/Enter";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import NotFoundPage from "./pages/NotFoundPage";
+import UserSettings from "./pages/UserSettings";
 import Layout from "./Layout";
+import SideBar from "./components/nav/SideBar";
 
 const getStoredToken = () => localStorage.getItem("token");
 const saveToken = (token) => {
@@ -38,6 +40,7 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path="work" element={<Work />} />
         <Route path="diet" element={<Diet />} />
+        <Route path="user" element={<UserSettings />} />
       </Route>
     </>
   );

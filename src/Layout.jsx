@@ -3,7 +3,8 @@ import SideBar from "./components/nav/SideBar";
 import { useState } from "react";
 
 const Layout = ({ setToken }) => {
-  const [sideBarOpen, SetSideBarOpen] = useState(true);
+  const [sideBarOpen, SetSideBarOpen] = useState();
+
   return (
     <div className="relative">
       <Nav setToken={setToken} SetSideBarOpen={SetSideBarOpen} />
