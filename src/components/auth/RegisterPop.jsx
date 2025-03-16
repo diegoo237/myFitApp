@@ -1,12 +1,8 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function RegisterPop({ registered, setToken, username, handleLogin }) {
+function RegisterPop() {
   const navigate = useNavigate();
 
-  const handleLoginAndNavigate = async () => {
-    await handleLogin();
-    navigate("/");
-  };
   return (
     <div
       className={
@@ -19,12 +15,9 @@ function RegisterPop({ registered, setToken, username, handleLogin }) {
       <span className="flex gap-3	">
         <button
           className="bg-violet-6 px-2 py-1"
-          onClick={handleLoginAndNavigate}
+          onClick={() => navigate("/login")}
         >
-          Conectar como {username}
-        </button>
-        <button className="bg-violet-6 px-2 py-1" onClick={() => navigate("/")}>
-          Conectar com outra conta
+          Login
         </button>
       </span>
     </div>

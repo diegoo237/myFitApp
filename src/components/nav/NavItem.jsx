@@ -18,10 +18,10 @@ function NavItem({ icon, path, label, fillIcon }) {
       {({ isActive }) => (
         <div className="flex gap-2 items-center ">
           {isActive ? (
-            <img className="w-6 " src={fillIcon} alt={label} />
+            <img className="sm-max:w-5 w-7" src={fillIcon} alt={label} />
           ) : (
             <img
-              className="w-6"
+              className="sm-max:w-5 w7"
               src={isHovered ? fillIcon : icon}
               alt={label}
             />
