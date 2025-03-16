@@ -1,3 +1,5 @@
+import TextInput from "./TextInput";
+
 function AuthForm({ handleLogin, setUserName, setPassword }) {
   return (
     <form
@@ -8,29 +10,17 @@ function AuthForm({ handleLogin, setUserName, setPassword }) {
         LOGIN
       </label>
 
-      <div className="flex flex-col">
-        <label className="text-gray-300 font-mplus">Username</label>
-        <input
-          type="text"
-          aria-label="Username"
-          placeholder="zack"
-          className="h-11 bg-graphite-black px-1.5 border-neutral-gray border-2 rounded"
-          required
-          onChange={(e) => setUserName(e.target.value)}
-        ></input>
-      </div>
-
-      <div className="flex flex-col">
-        <label className="text-gray-300	 font-mplus">Password</label>
-
-        <input
-          type="password"
-          aria-label="password"
-          className="h-11 bg-graphite-black px-1.5 border-neutral-gray border-2 rounded"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
-      </div>
+      <TextInput
+        label="Username"
+        onChange={(e) => setUserName(e.target.value)}
+        placeholder="zack"
+        disabled={false}
+      />
+      <TextInput
+        label="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder=""
+      />
 
       <button className="mt-9 bg-violet-6 h-11 font-mplus font-bold text-charcoal-gray rounded">
         Login
