@@ -45,21 +45,17 @@ npm install
    Crie um arquivo .env nas pastas frontend e backend para configurar as variáveis de ambiente (como URLs de API, chaves secretas, etc.).
 
 4. Rodando o Frontend
-   sh
-   Copy
-   Edit
    cd frontend
    npm run dev
-5. Rodando o Backend
-   sh
-   Copy
-   Edit
+   
+6. Rodando o Backend
    cd backend
    nodemon index.js
-6. Acesse a aplicação
-   O frontend estará disponível em http://localhost:3000.
+   
+8. Acesse a aplicação
+   O frontend estará disponível em http://localhost:5173.
 
-O backend estará disponível em http://localhost:5000.
+   O backend estará disponível em http://localhost:5000.
 
 📚 Contribuições
 Fork o repositório
@@ -75,7 +71,7 @@ git push origin minha-feature
 Abra um Pull Request com uma descrição clara sobre o que foi alterado.
 
 👥 Autores
-Diego Oliveira - diegoo237
+Diego Carvalho - diegoo237
 
 📝 Licença
 Este projeto é licenciado sob a MIT License - veja o arquivo LICENSE para mais detalhes.
