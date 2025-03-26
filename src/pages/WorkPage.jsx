@@ -1,5 +1,5 @@
-function Work() {
+function WorkPage() {
   return <div className="h-screen bg-graphite-black "></div>;
 }
 
-export default Work;
+export default WorkPage;

@@ -1,5 +1,5 @@
-function Diet() {
+function DietPage() {
   return <div className="h-screen bg-graphite-black "></div>;
 }
 
-export default Diet;
+export default DietPage;

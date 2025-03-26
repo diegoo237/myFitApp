@@ -4,7 +4,7 @@ import RegisterPop from "../../components/auth/RegisterPop.jsx";
 import { registerUser } from "../../api/auth/registerUser.js";
 import BlurFilter from "../../components/Filters/BlurFilter.jsx";
 
-function Register() {
+function RegisterPage() {
   const [registered, setRegistered] = useState("");
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -40,4 +40,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterPage;
