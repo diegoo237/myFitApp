@@ -1,5 +1,10 @@
+import DietCard from "../components/diet/DietCard";
 function Diet() {
-  return <div className="h-screen bg-graphite-black "></div>;
+  return (
+    <main className="h-screen bg-graphite-black flex flex-col py-10 gap-5 items-center">
+      <DietCard />
+    </main>
+  );
 }
 
 export default Diet;
