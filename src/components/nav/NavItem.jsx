@@ -11,7 +11,7 @@ function NavItem({ icon, path, label, fillIcon }) {
       to={path}
       className={({ isActive }) =>
         isActive
-          ? "flex items-center  justify-center text-white-gray font-semibold bg-[#343a40] p-2 rounded-xl "
+          ? "flex items-center justify-center text-white-gray font-semibold bg-gray-800  p-2 rounded-xl "
           : "flex items-center gap-2  text-white hover:fill-black"
       }
     >

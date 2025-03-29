@@ -19,7 +19,10 @@ export default {
       },
       colors: {
         "graphite-black": "#1C1C1E",
-        "violet-6": "#7950F2",
+        "graphite-black2": "#212529",
+        "graphite-black3": "#343a40",
+        "graphite-black4": "#dee2e6",
+        "violet-6": "#5f3dc4",
         "white-gray": "#f1f3f5",
         "charcoal-gray": "#252525",
       },
