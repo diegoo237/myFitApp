@@ -1,6 +1,12 @@
 import TextInput from "./TextInput";
 
-function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
+function RegisterForm({
+  handleRegister,
+  email,
+  setEmail,
+  setUserName,
+  setPassword,
+}) {
   return (
     <form
       className="text-white	flex flex-col w-64 sm:w-72 md:w-80 lg:w-96 xl:w-2/6 gap-y-3"
@@ -17,6 +23,7 @@ function RegisterForm({ handleRegister, setEmail, setUserName, setPassword }) {
       <TextInput
         label="Email"
         onChange={(e) => setEmail(e.target.value)}
+        value={email}
         placeholder="zack@hotmail.com"
       />
       <TextInput

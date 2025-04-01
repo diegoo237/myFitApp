@@ -5,16 +5,15 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Diet from "./pages/Diet";
-import Work from "./pages/Work";
-import Enter from "./pages/Enter";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
+import DashboardPage from "./pages/DashboardPage";
+import DietPage from "./pages/DietPage";
+import WorkPage from "./pages/WorkPage";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/auth/LoginPage";
+import RegisterPage from "./pages/auth/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import UserSettings from "./pages/UserSettings";
+import UserSettingsPage from "./pages/UserSettingsPage";
 import Layout from "./Layout";
-import SideBar from "./components/nav/SideBar";
 
 const getStoredToken = () => localStorage.getItem("token");
 const saveToken = (token) => {
@@ -37,19 +36,22 @@ function App() {
     <>
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/" element={<Layout setToken={handleSetToken} />}>
-        <Route index element={<Dashboard />} />
-        <Route path="work" element={<Work />} />
-        <Route path="diet" element={<Diet />} />
-        <Route path="user" element={<UserSettings />} />
+        <Route index element={<DashboardPage />} />
+        <Route path="work" element={<WorkPage />} />
+        <Route path="diet" element={<DietPage />} />
+        <Route path="user" element={<UserSettingsPage />} />
       </Route>
     </>
   );
 
   const unauthenticatedRoutes = (
     <>
-      <Route path="/" element={<Enter />} />
-      <Route path="login" element={<Login setToken={handleSetToken} />} />
-      <Route path="register" element={<Register setToken={handleSetToken} />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="login" element={<LoginPage setToken={handleSetToken} />} />
+      <Route
+        path="register"
+        element={<RegisterPage setToken={handleSetToken} />}
+      />
     </>
   );
 

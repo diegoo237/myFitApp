@@ -185,7 +185,7 @@ const diets = [
     ],
   },
 ];
-function Diet() {
+function DietPage() {
   return (
     <main className=" bg-graphite-black flex flex-col py-10 gap-8 items-center">
       {diets.map((diet, index) => (
@@ -195,4 +195,4 @@ function Diet() {
   );
 }
 
-export default Diet;
+export default DietPage;
