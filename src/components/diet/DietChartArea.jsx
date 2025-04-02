@@ -1,36 +1,30 @@
-import MacroLabel from "./MacroLabel";
+import NutrientList from "./NutrientList";
+import calculateTotals from "../../helpers/calculateTotals";
+import { useMemo } from "react";
+
 function DietChartArea({ meals }) {
-  const foodItems = meals.flatMap((meal) => meal.items);
+  const totals = useMemo(() => calculateTotals(meals), [meals]);
 
-  const totals = foodItems.reduce(
-    (acc, item) => {
-      acc.protein += item.protein;
-      acc.carbs += item.carbs;
-      acc.kcal += item.kcal;
-      acc.fat += item.fat;
-      return acc;
-    },
-    { protein: 0, carbs: 0, kcal: 0, fat: 0 }
-  );
+  const macronutrients = [
+    { label: "Proteína", value: totals.protein, color: "bg-red-800" },
+    { label: "Carboidratos", value: totals.carbs, color: "bg-blue-800" },
+    { label: "Calorias", value: totals.kcal, color: "bg-yellow-800" },
+    { label: "Gordura", value: totals.fat, color: "bg-green-800" },
+  ];
 
-  const nutrients = [
-    { label: "Proteína", value: totals.protein },
-    { label: "Carboidratos", value: totals.carbs },
-    { label: "Calorias", value: totals.kcal },
-    { label: "Gordura", value: totals.fat },
+  const micronutrients = [
+    { label: "Fibras", value: totals.fiber, color: "bg-purple-800" },
+    { label: "Sódio", value: totals.sodium, color: "bg-pink-800" },
+    { label: "Açúcares", value: totals.sugar, color: "bg-orange-800" },
+    { label: "Ferro", value: totals.iron, color: "bg-gray-800" },
+    { label: "Cálcio", value: totals.calcium, color: "bg-indigo-800" },
+    { label: "Potássio", value: totals.potassium, color: "bg-teal-800" },
   ];
 
   return (
     <div className="w-full p-4 gap-4 rounded-lg bg-gray-800 hover:bg-gray-700 flex flex-col">
-      <div className="flex gap-3">
-        {nutrients.map(({ label, value }) => (
-          <MacroLabel key={label} label={label} value={value} />
-        ))}
-      </div>
-
-      <div className="flex bg-green-400 p-1 items-center justify-center rounded-lg ">
-        <span className="font-bold text-sm">GRAFICO</span>
-      </div>
+      <NutrientList title="Macronutrientes" nutrients={macronutrients} />
+      <NutrientList title="Micronutrientes" nutrients={micronutrients} />
     </div>
   );
 }
