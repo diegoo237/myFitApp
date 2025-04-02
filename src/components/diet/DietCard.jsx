@@ -1,6 +1,5 @@
 import DietColumn from "./DietColumn";
 import DietChartArea from "./DietChartArea";
-/*   */
 
 function DietCard({ diet }) {
   return (
