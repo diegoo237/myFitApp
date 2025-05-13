@@ -1,5 +1,5 @@
 export async function registerUser(credentials) {
-  return fetch("http://localhost:5000/register", {
+  return fetch("http://localhost:5000/api/auth/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

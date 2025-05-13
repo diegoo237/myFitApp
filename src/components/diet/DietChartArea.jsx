@@ -22,7 +22,7 @@ function DietChartArea({ meals }) {
   ];
 
   return (
-    <div className="w-full p-4 gap-4 rounded-lg bg-gray-800 hover:bg-gray-700 flex flex-col">
+    <div className="p-4 gap-4 rounded-lg bg-gray-800 hover:bg-gray-700 flex flex-col">
       <NutrientList title="Macronutrientes" nutrients={macronutrients} />
       <NutrientList title="Micronutrientes" nutrients={micronutrients} />
     </div>

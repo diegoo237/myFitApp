@@ -32,7 +32,7 @@ function App() {
     saveToken(newToken);
   };
 
-  const unauthenticatedRoutes = (
+  const authenticatedRoutes = (
     <>
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/" element={<Layout setToken={handleSetToken} />}>
@@ -44,7 +44,7 @@ function App() {
     </>
   );
 
-  const authenticatedRoutes = (
+  const unauthenticatedRoutes = (
     <>
       <Route path="/" element={<LandingPage />} />
       <Route path="login" element={<LoginPage setToken={handleSetToken} />} />

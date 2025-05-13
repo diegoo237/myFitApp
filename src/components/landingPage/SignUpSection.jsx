@@ -1,15 +1,25 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignUpSection() {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setEmail(event.target.value);
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    if (email && email.includes("@")) {
+      navigate("/register", { state: { email } });
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
   return (
-    <form className="h-12 p-1 bg-white rounded-sm flex">
+    <form className="h-12 p-1 bg-white rounded-sm flex" onSubmit={handleClick}>
       <input
         required
         className="h-full p-2 text-black rounded-sm mr-2"
@@ -19,13 +29,9 @@ function SignUpSection() {
         onChange={handleChange}
         aria-label="Email address"
       />
-      <Link
-        className="h-full p-2 bg-violet-6"
-        to={email && email.includes("@") ? "/register" : "#"}
-        state={{ email }}
-      >
+      <button type="submit" className="h-full p-2 bg-violet-6">
         Sign up for MyFitApp
-      </Link>
+      </button>
     </form>
   );
 }
